@@ -40,4 +40,3 @@
 - while true; do curl http://bg.apps.example.com/; echo; sleep 1; done;
 - oc edit route myappv1 ; change myappv1->myappv2
 - request direct to v2 without error.
-
