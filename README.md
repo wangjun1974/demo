@@ -2,15 +2,15 @@
 - oc new-app openshift/php:5.6~https://github.com/cdan/ab-deploy.git -l abdeploy=true --name=myappv1  
 - oc edit dc myappv1 (intervalSeconds: 2)  add readiness probe under imagePullPolicy
 
-            readinessProbe:    
-              failureThreshold: 3  
-              httpGet:  
-                path: /  
-                port: 8080  
-                scheme: HTTP  
-              periodSeconds: 5  
-              successThreshold: 1  
-              timeoutSeconds: 1  
+                readinessProbe:    
+                  failureThreshold: 3  
+                  httpGet:  
+                    path: /  
+                    port: 8080  
+                    scheme: HTTP  
+                  periodSeconds: 5  
+                  successThreshold: 1  
+                  timeoutSeconds: 1  
 - oc scale --replicas=6 dc myappv1
 - oc expose service/myappv1 --hostname=rolling.apps.example.com  
 - while true; do curl http://rolling.apps.example.com/; sleep 1; done;  
